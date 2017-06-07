@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	  
+	    <script type="text/javascript">
+	    $( document ).ready(function() {
+    				
+	    //https://graph.facebook.com/v2.9/{page-id}/feed?access_token=
+
+	    //'https://graph.facebook.com/{page-id}/feed?access_token={access-token}&fields=attachments,link&limit=5';
+	    var token="EAACEdEose0cBAAUZCeOwC7b9y4V4PsOmpNjr4XwZBfiAWx33ZBS63J4Sd653W9ZB7WdZBAZCGCOLqxihbZAZA6uOXZCZAMv19JZBwwMy72tp7ZBH7nyIlZCFqEDmYE6RqSmOxKilwZCypu95WveFySxuVDl0S298Ax6laPTQyZASZBPoZAXBICteBmXioZBHBQ";
+	    //Get  recent posts made by you on facebook
+	    // get numeric FbId from url- https://findmyfbid.com/
+	    $("#btnSubmit").on('click',function(){
+	    	
+	    	$.ajax('https://graph.facebook.com/v2.9/340434049391991/feed?access_token=' + token,{
+    		success:function(data){
+    			
+    			console.log(data);
+    			//console.log(data[1].message);
+    				$("#postId").val(data.data[0].id);
+    				$("#message").val(data.data[1].message);
+    				$("#Story").val(data.data[0].story);  
+    				
+    			},
+	    	error:function(){
+	    			$("#dv").text('An error occurred');
+	    			$("#dv").css("background-color", "yellow");
+	    	}
+	    });//end of ajax call
+	    }); // end of function
+
+	   });
+	    
+	    
+	    </script>
+	  </head>
+	  <body>
+	  <label>Post ID</label>
+		<input type="text" id="postId" size="30"><br>
+		<label>Message</label>
+		<input type="text" id="message" size="30"><br>
+	    <label>Story</label>
+	    <input type="text" id="Story" size="30"><br>
+	    
+	    <input type="submit" id="btnSubmit" value="Get recent post"><br><br>
+
+	    <div id="dv">Error is shown here:</div>
+	  </body>
+	  </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	  
+	    <script type="text/javascript">
+	    $( document ).ready(function() {
+    				
+	    //store access token in a variable.token value is timed out after certain amount of time.
+	    var accessToken="EAACEdEose0cBAI2Cchxjm9oIwAETR6Gi87AGZAFB934Qr6QBeVSKlvj9f8camOjHGAB5qdDfhENgZA0MptoyUeHWFmqcaoNQLCPjY6mgeZA3A8QlnY7BWZB6G8jdojvHqYCtGb1FXKfheHeSibQuIxPlkheyyvnkZAKBjS4OOp8FcAa4YEKmh";
+	    
+	    $("#btnSubmit").on('click',function(){
+	    	
+	    	$.ajax('https://graph.facebook.com/me?access_token=' + accessToken,{
+    		success:function(data){
+    			
+    			console.log(data);
+    				$("#email").val(data.first_name);
+    				$("#BirthDay").val(data.birthday);  
+    				$("#Hometown").val(data.hometown.name);
+    				$("#location").val(data.location.name);
+    				$("#relationship").val(data.relationship_status);  
+    				$("#name").val(data.name);
+    			},
+	    	error:function(){
+	    			$("#dv").text('An error occurred');
+	    	}
+	    });//end of ajax call
+	    }); // end of function
+
+	   });
+	    
+	    //As an alternate way, we can also pass callback function to the url
+	    /*
+	    function callback(r,s){
+	    	var html="";
+    			 if ( !r.error) {
+    			for (p in r) {
+                    html += p + ": " + r[p] + "<br />";
+                }
+            }
+            else{
+            	html=r.error.message;
+            }
+            $("#dv").html(html);
+				
+	    }*/
+	    </script>
+	  </head>
+	  <body>
+		<label>Email</label>
+		<input type="text" id="email" size="30"><br>
+	    <label>BirthDay</label>
+	    <input type="text" id="BirthDay" size="30"><br>
+	    <label>Hometown</label>
+	     <input type="text" id="Hometown" size="30"><br>
+	    <label>location</label>
+	    <input type="text" id="location" size="30"><br>
+	    <label>relationship</label>
+	    <input type="text" id="relationship" size="30"><br>
+	    <label>Name</label>
+	    <input type="text" id="name" size="30"><br><br>
+	    <input type="submit" id="btnSubmit" value="Get Profile Data"><br><br>
+
+	    <div id="dv">Error is shown here:</div>
+	  </body>
+	  </html>
