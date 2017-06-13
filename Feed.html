@@ -25,7 +25,7 @@
     				
     			},
 	    	error:function(){
-	    			$("#dv").text('An error occurred');
+	    			$("#dv").text('An error occurred,please check the console.');
 	    			$("#dv").css("background-color", "yellow");
 	    	}
 	    });//end of ajax call
@@ -37,6 +37,8 @@
 	    </script>
 	  </head>
 	  <body>
+	  <h1>please make sure to generate an access token from FB and replace in the code before using this page.</h1>
+	  
 	  <label>Post ID</label>
 		<input type="text" id="postId" size="30"><br>
 		<label>Message</label>

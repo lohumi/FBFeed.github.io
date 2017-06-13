@@ -23,7 +23,7 @@
     				$("#name").val(data.name);
     			},
 	    	error:function(){
-	    			$("#dv").text('An error occurred');
+	    			$("#dv").text('An error occurred.please check the console for full error');
 	    	}
 	    });//end of ajax call
 	    }); // end of function
@@ -48,6 +48,7 @@
 	    </script>
 	  </head>
 	  <body>
+	  <h1>please generate an access token from FB and replace in the code before using this page.</h1>
 		<label>Email</label>
 		<input type="text" id="email" size="30"><br>
 	    <label>BirthDay</label>
